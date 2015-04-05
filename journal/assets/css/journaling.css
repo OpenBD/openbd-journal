@@ -1,0 +1,451 @@
+/**
+ * OpenBD Journaling Tool
+ * Copyright (C) 2015
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Journaling Styles
+ *
+ * BASE
+ */
+@font-face {
+  font-family: "Sinkin Sans";
+  src: url('fonts/SinkinSans.eot');
+  src: url('fonts/SinkinSans.eot?#iefix') format('embedded-opentype'),
+	  url('fonts/SinkinSans.svg#sinkin_sans400_regular') format('svg'),
+	  url('fonts/SinkinSans.woff') format('woff'),
+	  url('fonts/SinkinSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+	height: 100%;
+}
+
+html, table, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+  font-family: "Sinkin Sans", sans-serif;
+  font-size: 11px;
+}
+
+a {
+	color: #2fa5d7;
+}
+a:hover {
+	color: #0992cd;
+}
+
+.hide {
+	display: none;
+}
+
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.muted {
+	opacity: 0.6;
+	font-weight: normal !important;
+}
+
+.xsmall {
+	font-size: 70% !important;
+}
+.small {
+	font-size: 85% !important;
+}
+.large {
+	font-size: 110% !important;
+}
+.xlarge {
+	font-size: 125% !important;
+}
+
+table {
+  background: white;
+}
+
+.ralign {
+  text-align: right;
+}
+
+/**
+	* LAYOUT
+	*/
+body {
+	background: url(../img/whitebg.jpg) #F2F2F2;
+}
+#topbar {
+	height: 67px;
+	background: #11465B;
+	white-space: nowrap;
+}
+.topbar-contents {
+	padding: 5px 0 0 1em;
+}
+.topbar-contents h2 {
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	color: #F0F0F0;
+	display: inline-block;
+	margin-right: 1em;
+	margin-left: 0.5em;
+  line-height: 25px;
+}
+.breadcrumbs {
+	display: inline-block;
+  line-height: 25px;
+}
+.breadcrumbs a {
+	display: inline-block;
+	text-decoration: none;
+	color: #F0F0F0;
+	padding: 0.6em 0.4em;
+}
+.breadcrumbs a:hover {
+	background: #235B71;
+	border-radius: 4px;
+}
+#topbar .links {
+  display: inline-block;
+  margin: 0 0 0 1em;
+}
+
+#container {
+	padding: 1em 1%;
+	background: url('../img/dragon1.png') bottom right no-repeat;
+	position: relative;
+	height: 90%;
+}
+
+.coverage_list {
+  list-style-position: inside;
+  padding: 0 0 0 15px;
+  margin: 0;
+  color: #999;
+  text-indent: -10px;
+  word-wrap: break-word;
+}
+.coverage_list li {
+  margin: 0 0 0.5em;
+}
+
+.tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tabs .pure-button {
+  border-radius: 0;
+}
+.tabbed {
+  border-top: 1px solid #056e9b;
+  border-left: 1px solid #056e9b;
+  border-bottom: 1px solid #056e9b;
+  margin: 0 0 0 -1px;
+}
+.tabbed > * {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#files-list {
+  border-top: 1px solid #056e9b;
+  border-right: 1px solid #056e9b;
+  border-bottom: 1px solid #056e9b;
+  margin: 0 -1px 0 0;
+}
+#treeKey {
+  margin: 0 2em;
+}
+.tabbed, #legend, #files-list {
+  background: url('../img/bluebg.jpg') #E6F1F7;
+}
+#donuts .donutWrapper {
+  margin-top: 1em;
+}
+@media screen and (min-width: 1400px) {
+  #donuts .donutWrapper {
+    float: none;
+  }
+  #donuts .fltLeft {
+    float: none;
+    text-align: center;
+    margin-top: 1em;
+  }
+}
+
+/**
+	* FORMS, TABLES, & BUTTONS
+	*/
+.pure-form label {
+	margin-right: 0.5em;
+}
+.pure-form .desc {
+  color: #999;
+  font-size: 85%;
+}
+
+.pure-table th {
+	vertical-align: middle;
+}
+.pure-table td {
+	vertical-align: top;
+}
+
+.pure-button-primary,
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+	color: white !important;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.pure-button-primary {
+	background: #056e9b;
+}
+.button-success {
+	background: #00b148;
+}
+.button-error {
+	background: #f62f00;
+}
+.button-warning {
+	background: #F7941D;
+}
+.button-secondary {
+	background: #24A7DF;
+}
+.pure-button-primary.pure-button-active,
+.button-success.pure-button-active,
+.button-error.pure-button-active,
+.button-warning.pure-button-active,
+.button-secondary.pure-button-active,
+.pure-button-primary:active,
+.button-success:active,
+.button-error:active,
+.button-warning:active,
+.button-secondary:active {
+  color: #EEE !important;
+  box-shadow:0 0 0 1px rgba(0,0,0,.15) inset,0 0 15px rgba(0,0,0,.6) inset;
+}
+.pure-button-primary.pure-button-active:hover,
+.button-success.pure-button-active:hover,
+.button-error.pure-button-active:hover,
+.button-warning.pure-button-active:hover,
+.button-secondary.pure-button-active:hover {
+  background-image: none;
+}
+
+.button-group .pure-button {
+  border-radius: 0;
+}
+
+/**
+	* 	CHARTS
+	*/
+
+/* Donut */
+.donutWrapper {
+  margin: 0 20px;
+  float: left;
+  text-align: center;
+}
+.fltLeft {
+  float: left;
+  text-align: left;
+}
+.fltRight {
+  margin: 20px;
+  float: right;
+  text-align: left;
+}
+.donutWrapper h3 {
+  margin-top: 0;
+}
+
+/* d3 tooltips */
+.d3-tip {
+  background: none repeat scroll 0 0 rgba(17, 70, 91, 0.8);
+  border-radius: 2px;
+  border: solid 3px #C0E0EE;
+  color: #fff;
+  font-weight: bold;
+  line-height: 2;
+  padding: 12px;
+  pointer-events: none;
+}
+.d3-tip:after {
+  box-sizing: border-box;
+  color: rgb(17, 70, 91);
+  display: inline;
+  font-size: 10px;
+  line-height: 1;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+}
+.d3-tip.n:after {
+  content: "▼";
+  left: 0;
+  margin: -1px 0 0;
+  text-align: center;
+  top: 100%;
+}
+.d3-tip.e:after {
+  content: "◀";
+  left: -8px;
+  margin: -4px 0 0;
+  top: 50%;
+}
+.d3-tip.s:after {
+  content: "▲";
+  left: 0;
+  margin: 0 0 1px;
+  text-align: center;
+  top: -8px;
+}
+.d3-tip.w:after {
+  content: "▶";
+  left: 100%;
+  margin: -4px 0 0 -1px;
+  top: 50%;
+}
+
+.d3-text-highlight {
+  background: none repeat scroll 0 0 rgba(17, 70, 91, 0.8);
+  color: #fff;
+}
+
+/* bar charts */
+#horizontalBarGraph {
+  background-color: #FFF;
+  padding: 10px 10px 0 10px;
+  overflow: auto;
+}
+#horizontalBarGraph ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 10px 0 0;
+  float: left;
+  text-align: right;
+}
+#horizontalBarGraph ul li {
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+#horizontalBarGraph .bars-container {
+  float: left;
+}
+#horizontalBarGraph .bars-container div {
+  margin-bottom: 5px;
+}
+#horizontalBarGraph a {
+  white-space: nowrap;
+}
+
+
+/**
+  * SOURCE BLOCKS
+  */
+.source-wrapper {
+  outline: 1px solid #ddd;
+}
+.source-group .source-file {
+  max-height: 40em;
+  overflow: auto;
+  background: white;
+}
+.source-file table {
+  font-family: Consolas, "Lucida Console", "Lucida Sans Typewriter", monospace;
+  border: 0;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-rendering: optimizeLegibility;
+}
+.source-file a {
+  color: #000;
+}
+.source-file-title {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px 0;
+  text-indent: 0.5em;
+  text-shadow: 0 1px 0 #fff;
+  border-bottom: 1px solid #d8d8d8;
+  background-color: #f7f7f7;
+}
+
+pre {
+  margin: 0;
+  font: inherit;
+  white-space: pre-wrap;
+  /*vertical-align: baseline;*/
+}
+.source-file .marker {
+  padding-right: 0;
+  padding-left: 0;
+  border-top: 0;
+  border-bottom: 0;
+}
+.source-file .lineNumber,
+.source-file .lineOccur {
+  width: 1%;
+  padding-left: 0;
+  min-width: 1em;
+  font-family: Consolas, Courier, monospace;
+  font-size: 12px;
+  line-height: 18px;
+  opacity: 0.3;
+  vertical-align: top;
+  text-align: right;
+  border: solid #eee;
+  border-width: 0 1px 0 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.directory-file-link {
+	stroke: #24A7DF;
+}
+.source-file .lineOccur {
+  opacity: 1;
+  font-weight: bold;
+  color: #F7A80D;
+}
+.source-file .hlGreen {
+  background-color: #8CFFBD;
+}
+.source-file .hlRed {
+  background-color: #F99A9E;
+}
+.source-file .hlGrey {
+  color: #999999;
+}
+/*.hlBlackout {
+  background-color: #121633;
+}*/
+
+.syncWarning {
+  border: dashed 1px #f00;
+  background-color: #fdd;
+  padding-left: 1em;
+}
