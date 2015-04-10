@@ -77,10 +77,10 @@ being executed during current point in the journal playback, as well as
 highlight the specific line in that source code that was being executed.
 
 # Libraries
-  jQuery (version 2.1.3)
-	jQuery scrollTo plugin (version 1.4.14)
-	D3.js (version 3.5.5)
-	D3.tip (version 0.6.6) http://labratrevenge.com/d3-tip/
-	D3.layout 
-	D3.layout.gantt
-	D3.geom 
+* jQuery (version 2.1.3)
+* jQuery scrollTo plugin (version 1.4.14)a
+* D3.js (version 3.5.5)
+* D3.tip (version 0.6.6) https://github.com/Caged/d3-tip
+* D3.layout http://mbostock.github.io/d3/talk/20111116/d3/d3.layout.js
+* D3.layout.gantt
+* D3.geom http://mbostock.github.io/d3/talk/20111116/d3/d3.geom.js
