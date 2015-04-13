@@ -31,10 +31,10 @@ if( StructKeyExists( form, "journalauth" ) && form.journalauth == "openbdjournal
 
 <cfinclude template="header.cfm" />
 
-	<form method="POST" action="">
-		<p>Enter the OpenBD Journaling Password to continue</p>
-		<label>Password <input type="password" name="journalauth" /></label>
-		<button type="submit">Login</button>
+	<h2>You must login to continue</h2>
+	<form method="POST" action="" class="pure-form">
+		<label for="journalauth">OpenBD Journal Password: &nbsp;<input type="password" id="journalauth" name="journalauth" /></label>
+		<button class="pure-button pure-button-primary" type="submit">Login</button>
 	</form>
 
 <cfinclude template="footer.cfm" />

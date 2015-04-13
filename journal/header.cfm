@@ -53,34 +53,39 @@
 	<script src="assets/js/journal/source-file-tracer.js"></script>
 	<script src="assets/js/journal/request-context.js"></script>
 	<!--- gantt chart for timeline --->
-	<script src="assets/js/vendor/d3.layout.gantt.js"></script>
+	<script src="assets/js/journal/d3.layout.gantt.js"></script>
 	</cfif>
 </head>
 <body>
 	<div id="topbar">
 		<div class="topbar-contents">
-			<a href="/journaling/"><img src="assets/img/openBD_57px.png" align="left"></a>
-			<h2><cfif isDefined('title') && title != ''><cfoutput>#title#</cfoutput><cfelse>Journaling</cfif></h2>
-			<cfif current != 'index.cfm'>
-			<div class="breadcrumbs"><cfoutput>
-				<a href="index.cfm">Home <span class="muted">&nbsp;&raquo;</span></a>
-				<cfif url.journal != "">
-					<a href="coverage.cfm?journal=#url.journal#">Journal: #url.journal#<cfif isDefined('file1name')> <span class="muted">&nbsp;&raquo;</span></cfif></a>
-				<cfelse>					
-					<a href="">#ReReplace(ReReplaceNocase(current, '([A-z]+).cfm', '\u\1'), '([a-z])([A-Z])', '\1 \2', 'ALL')#</a>
-				</cfif>
-				<cfif isDefined('file1name')>
-					<a href="">File: #file1name#</a>
-				</cfif>
+
+			<a href="/journal/" title="OpenBD Journal - Home"><img src="assets/img/openBD_57px.png"></a>
+
+			<h1><cfif isDefined('title') && title != ''><cfoutput>#title#</cfoutput><cfelse>Journal</cfif></h1>
+
+			<cfif current != 'index.cfm' && current != 'login.cfm'>
+			<div class="pure-menu pure-menu-horizontal large"><cfoutput>
+				<ul class="pure-menu-list">
+					<!--- <li class="pure-menu-item"><a href="index.cfm" class="pure-menu-link">Home</a></li> --->
+					<cfif url.journal != "">
+					<li class="pure-menu-item"><a href="coverage.cfm?journal=#url.journal#" class="pure-menu-link">Journal: #url.journal#<cfif isDefined('file1name')></cfif></a></li>
+					<cfelse>					
+					<li class="pure-menu-item"><a href="" class="pure-menu-link">#ReReplace(ReReplaceNocase(current, '([A-z]+).cfm', '\u\1'), '([a-z])([A-Z])', '\1 \2', 'ALL')#</a></li>
+					</cfif>
+					<cfif isDefined('file1name')>
+					<li class="pure-menu-item"><a href="" class="pure-menu-link">File: #file1name#</a></li>
+					</cfif>
+				</ul>
 			</cfoutput></div>
+
 			<cfif url.journal != "">
-				<div class="links">
-				<cfoutput>
-					<a href="coverage.cfm?journal=#url.journal#" class="pure-button button-warning<cfif findnocase('coverage', current) gt 0> pure-button-active</cfif>">coverage</a>
-					<cfif ( IsSimplevalue(journal) && left( journal, 9 ) != "/compound" ) or ( isStruct(journal) && left( journal.relativeToJournal, 9 ) != "/compound" ) ><a href="code-trace.cfm?journal=#url.journal#" class="pure-button button-secondary<cfif current == 'code-trace.cfm'> pure-button-active</cfif>">performance</a></cfif>
-				</cfoutput>
-				</div>
+			<div class="top-buttons"><cfoutput>
+				<a href="coverage.cfm?journal=#url.journal#" class="pure-button button-warning<cfif findnocase('coverage', current) gt 0> pure-button-active</cfif>">coverage</a>
+				<cfif ( IsSimplevalue(journal) && left( journal, 9 ) != "/compound" ) or ( isStruct(journal) && left( journal.relativeToJournal, 9 ) != "/compound" ) ><a href="code-trace.cfm?journal=#url.journal#" class="pure-button button-secondary<cfif current == 'code-trace.cfm'> pure-button-active</cfif>">performance</a></cfif>
+			</cfoutput></div>
 			</cfif>
+
 			</cfif>
 		</div>
 	</div>

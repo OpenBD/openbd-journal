@@ -70,20 +70,20 @@
 		<!--- rock and roll, we've got everything we need --->
 
 		<div id="controls">
-			<div class="pure-g button-group">
-				<button id="reload" title="Reset" class="pure-button xlarge pure-u-1-5"><i class="fa icon-ccw"></i></button>
-				<button id="stepback" title="Step back" class="pure-button xlarge pure-u-1-5"><i class="fa icon-fast-bw"></i></button>
-				<button id="play" title="Play" class="pure-button xlarge pure-u-1-5"><i class="fa icon-play"></i></button>
-				<button id="stop" title="Pause" class="pure-button xlarge pure-u-1-5"><i class="fa icon-pause"></i></button>
-				<button id="stepforward" title="Step forward" class="pure-button xlarge pure-u-1-5"><i class="fa icon-fast-fw"></i></button>
+			<div class="pure-g button-group xlarge">
+				<button id="reload" title="Reset" class="pure-button pure-u-1-5"><i class="fa icon-ccw"></i></button>
+				<button id="stepback" title="Step back" class="pure-button pure-u-1-5"><i class="fa icon-fast-bw"></i></button>
+				<button id="play" title="Play" class="pure-button pure-u-1-5"><i class="fa icon-play"></i></button>
+				<button id="stop" title="Pause" class="pure-button pure-u-1-5"><i class="fa icon-pause"></i></button>
+				<button id="stepforward" title="Step forward" class="pure-button pure-u-1-5"><i class="fa icon-fast-fw"></i></button>
 			</div>
 			<div class="input-group">
 				<input type="range" min="1" max="10" value="5" id="playback-speed" /></label>
-				<label for="playback-speed"><span id="speed-summary">5</span> lines per second</label>
+				<label for="playback-speed"><span id="speed-summary" class="xlarge">5</span> lines per second</label>
 			</div>
 			<div class="input-group">
 				<input type="range" min="1" max="3" value="1" id="files-to-show" />
-				<label for="files-to-show">Show <span id="files-shown-summary">1</span> files</label>
+				<label for="files-to-show">Show <span id="files-shown-summary" class="xlarge">1</span> files</label>
 			</div>
 			<cfif StructKeyExists( jrnl, "session_capture" ) && jrnl.session_capture>
 				<label for="showSessionDump" class="pure-checkbox"><input type="checkbox" value=1 id="showSessionDump" checked /> show session data</label>
@@ -92,7 +92,7 @@
 
 		<div style="margin-top: 50px"></div> <!--- clears the control bar --->
 
-		<div id="source-files" class="pure-g source-group">
+		<div id="source-files" class="pure-g g-style source-group">
 			<div id="var-cont"><div id="sessionVars"></div></div>
 		</div>
 
@@ -193,7 +193,7 @@
 			    bottom: 10,
 			    left: 200
 			  },
-			  height = Math.max( document.body.clientHeight * 0.3, 100 ),
+			  height = Math.max( document.body.clientHeight * 0.3, fileBlocks.length * 6 ),
 			  width = document.getElementById( 'timeline' ).clientWidth,
 			  events = {
 			    'brush': function( value ) {
@@ -256,7 +256,7 @@
 			// shorten labels to fit... TODO d3 way
 			$( '.tick text' ).each( function( i ) {
 			  var label = this.textContent;
-			  len = label.length * 7.5;
+			  len = label.length * 8.1;
 			  if ( len > margin.left ) {
 			    var chop = Math.round( ( len - margin.left ) / 10 );
 			    this.textContent = label.substring( 0, ( label.length / 2 - chop / 2 ) ) +

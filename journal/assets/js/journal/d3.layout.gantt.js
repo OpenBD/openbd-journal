@@ -1,5 +1,5 @@
 /**********************************************************
- * Author: @CaitlinMWeb
+ * Author: @CaitlinWeb
  * Special thanks to https://github.com/dk8996/Gantt-Chart,
  * http://bl.ocks.org/mbostock/6452972
  *********************************************************/

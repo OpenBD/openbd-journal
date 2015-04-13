@@ -68,11 +68,11 @@
 	<h3 id="checkReload" style="visible:none;">&nbsp;</h3>
 
 	<cfset browser = brw.queryAllJournals("","",true)>
-	<form action="" method="post" class="pure-form ">
-		<table id="allJournals" border="0" cellspacing="0" class="pure-table pure-table-bordered pure-table-striped">
+	<form action="" method="post" class="pure-form">
+		<table id="allJournals" border="0" cellspacing="0" class="pure-table pure-table-bordered pure-table-striped text-top">
 			<thead>
 				<tr>
-					<th><label class="pure-checkbox small"><input type="checkbox" id="checkAll"> all</label></th>
+					<th><input type="checkbox" id="checkAll" title="Select all"></th>
 					<th></th>
 					<th>Journal</th>
 					<th>Starting URI</th>
@@ -80,7 +80,7 @@
 					<th>Output</th>
 					<th>Size</th>
 					<th>Time</th>
-					<th><label class="pure-checkbox"><input type="checkbox" id="files-control" checked> Show Coverage Files</label></th>
+					<th><label><input type="checkbox" id="files-control" checked> Show Coverage Files</label></th>
 				</tr>
 			</thead>
 			<cfif (browser.recordCount > 0)>
@@ -90,15 +90,15 @@
 					<tr>
 						<td><input type="checkbox" name="fl" value="#journal.relativeToJournal#"></td>
 						<td>
-							<a href="coverage.cfm?journal=#journal.relativeToJournal#" class="pure-button small button-warning">coverage</a>
-							<cfif !left( journal.relativeToJournal, 9 ) == "/compound"><a href="code-trace.cfm?journal=#journal.relativeToJournal#" class="pure-button small button-secondary">performance</a></cfif>
+							<a href="coverage.cfm?journal=#journal.relativeToJournal#" class="pure-button button-warning">coverage</a>
+							<cfif !left( journal.relativeToJournal, 9 ) == "/compound"><a href="code-trace.cfm?journal=#journal.relativeToJournal#" class="pure-button button-secondary">performance</a></cfif>
 						</td>
 						<td>#journal.relativeToJournal#</td>
 						<td>#listFirst(journal.info._uri,"?")#</td>
-						<td class="ralign">#DateFormat(journal.timestamp, "dd mmm")#, #TimeFormat(journal.timestamp, "hh:mm:ss tt")#</td>
-						<td class="ralign">#journal.info._bytes# bytes</td>
-						<td class="ralign">#helper.getNiceSizeFormat( journal.info._fileSize )#</td>
-						<td class="ralign">#journal.info._timems# ms</td>
+						<td>#DateFormat(journal.timestamp, "dd mmm")#, #TimeFormat(journal.timestamp, "hh:mm:ss tt")#</td>
+						<td>#journal.info._bytes# bytes</td>
+						<td>#helper.getNiceSizeFormat( journal.info._fileSize )#</td>
+						<td>#journal.info._timems# ms</td>
 						<td>
 							<ul class="coverage_list">
 							<cfloop from="1" to="#arrayLen(journal.getFiles())#" index="f">
@@ -110,7 +110,7 @@
 				<cfcatch>
 					<tr>
 						<td><input type="checkbox" name="fl" value="#browser.name#"></td>
-						<td colspan=9>
+						<td colspan="9">
 							An error occurred while reading this journal file.
 						</td>
 					</tr>
@@ -126,7 +126,7 @@
 						<label class="pure-radio"><input type="radio" name="fileOption" value="delete"> Delete selected</label>
 						<label class="pure-radio"><input type="radio" name="fileOption" value="compound" checked="checked"> Compound selected</label>
 					</div>
-					<input type="submit" value="Do it" class="pure-button pure-button-primary small">
+					<input type="submit" value="Do it" class="pure-button pure-button-primary">
 				</td>
 			</tr>
 		</table>

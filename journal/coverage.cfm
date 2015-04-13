@@ -69,7 +69,7 @@
 
 		<cfoutput>
 
-		<div class="pure-g" style="min-width: 980px">
+		<div class="pure-g g-style" style="min-width: 980px">
 
 			<div class="tabs-container pure-u-1 pure-u-lg-20-24">
 				<ul class="tabs">

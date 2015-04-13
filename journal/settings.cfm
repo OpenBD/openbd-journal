@@ -71,9 +71,9 @@
 			</select>
 		</label> 
 		<label for="path">Capture URL: <input type="text" name="path" id="path" value="/" /></label>
-		<label for="_openbdjournal">Password: <input type="text" name="_openbdjournal" id="_openbdjournal" title="Append -1 to include session data" /></label>
-		<label for="session_capture">Capture Session: <input type="checkbox" name="session_capture" id="session_capture" title="Capture extra session data" /></label>
-		<button type="submit" id="enable" class="pure-button pure-button-primary">Create Journal</button>
+		<label for="_openbdjournal">Password: <input type="text" name="_openbdjournal" id="_openbdjournal" /></label>
+		<label for="session_capture" class="pure-checkbox"><input type="checkbox" name="session_capture" id="session_capture" title="Capture extra session data" /> Capture Session</label>
+		<button type="submit" id="enable" class="pure-button pure-button-primary large">Create Journal</button>
 		<button type="button" id="disable" class="pure-button button-success">Done</button>
 	</form>
 </div>
